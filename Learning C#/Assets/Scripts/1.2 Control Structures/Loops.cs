@@ -31,6 +31,22 @@ public class Loops : MonoBehaviour
         for (int i = 0; i < 9; i++) {
             Debug.Log(3 * i);
         }
+
+        // Break
+        for (int i = 0; i < 9; i++) {
+            if (i == 5) {
+                break;
+            }
+            Debug.Log(i);
+        }
+
+        // Continue
+        for (int i = 0; i < 9; i++) {
+            if (i % 2 == 0) {
+                continue;
+            }
+            Debug.Log(i);
+        }
         
     }
 }

@@ -20,6 +20,16 @@ public class Methods : MonoBehaviour
         return a + b;
     }
 
+    // Return Statements
+    int FindIndexOf(int number, int[] numbers) {
+        for (int i = 0; i < numbers.Length; i++) {
+            if (numbers[i] == number) {
+                return i;
+            }
+        }
+        return -1;
+    }
+
     int Sum(int[] numbers) {
         int sum = 0;
         foreach (int number in numbers) {
