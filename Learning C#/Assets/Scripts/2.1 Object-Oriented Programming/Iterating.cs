@@ -6,9 +6,10 @@ public class Iterating : MonoBehaviour
     void Start()
     {
         // Use the .Length property to get the number of elements in the array.
+
         string[] poses = {"run", "idle", "jump"};
 
-        for (int i = 0; poses.Length < 0; i++) {
+        for (int i = 0; i < poses.Length; i++) {
             Debug.Log(poses[i]);
         }
 
