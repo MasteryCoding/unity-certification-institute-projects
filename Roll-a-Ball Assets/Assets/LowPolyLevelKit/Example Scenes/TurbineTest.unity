@@ -308,9 +308,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4f0e6afbe0a81c443b0a0282ec67bea2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 0
-  jumpForce: 0
-  maxSpeed: 0
+  speed: 200
+  jumpForce: 10
+  maxSpeed: 500
 --- !u!1 &307421098 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 3465199043090133847, guid: 0b0bb1a5aea2ef5469c54d0388583352, type: 3}
@@ -857,7 +857,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 04effdac03f972148bfa99b225761a6d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  lookSpeed: 0
+  lookSpeed: 10
+  distance: 0
 --- !u!1001 &1689050862
 PrefabInstance:
   m_ObjectHideFlags: 0
