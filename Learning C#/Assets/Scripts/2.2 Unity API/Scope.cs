@@ -6,6 +6,7 @@ public class Scope : MonoBehaviour {
 
   void Start() {
     Debug.Log(canYouSeeMe);
+    checkScope();
   }
 
   void checkScope() {

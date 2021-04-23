@@ -25,9 +25,10 @@ namespace Testing
     public TestFindMin(Tester _tester) : base(_tester, "Test  FindMin") { }
     protected override void RunCase(int[] testCase, int index)
     {
-      int[] solutions = {-71, -94, -82, -99, 4};
+      int[] solutions = { -71, -94, -82, -99, 4 };
       int response = tester.target.FindMin(testCase);
-      if (response != solutions[index]) {
+      if (response != solutions[index])
+      {
         failedCases.Enqueue(
           new TestFail("FindMin", testCase, solutions[index], response, index)
         );
@@ -35,44 +36,51 @@ namespace Testing
     }
   }
 
-  public class TestFindElement : Test {
-    public TestFindElement(Tester _tester) : base(_tester, "Test  FindElement"){}
-    protected override void RunCase(int[] testCase, int index) {
-      int[] solutions = {2, 8, -1, 3, 14};
-      int[] testValues = {47, 59, 140, -91, 42};
+  public class TestFindElement : Test
+  {
+    public TestFindElement(Tester _tester) : base(_tester, "Test  FindElement") { }
+    protected override void RunCase(int[] testCase, int index)
+    {
+      int[] solutions = { 2, 8, -1, 3, 14 };
+      int[] testValues = { 47, 59, 140, -91, 42 };
       int response = tester.target.FindElement(testCase, testValues[index]);
-      if (response != solutions[index]) {
+      if (response != solutions[index])
+      {
         failedCases.Enqueue(
           new TestFail("FindElement", testCase, solutions[index], response, index)
         );
       }
     }
   }
-  public class TestReverse : Test {
-    public TestReverse(Tester _tester) : base(_tester, "Test  Reverse"){}
-    protected override void RunCase(int[] testCase, int index) {
+  public class TestReverse : Test
+  {
+    public TestReverse(Tester _tester) : base(_tester, "Test  Reverse") { }
+    protected override void RunCase(int[] testCase, int index)
+    {
       int[][] solutions = new int[5][];
-    solutions[0] = new int[]{75, 2, 0, 67, 99, -71, -27, 33, 25, -21, 86, 47, 77, 26};
-    solutions[1] = new int[]{34, 26, 73, -57, 0, 41, 59, 82, 78, -94, 60, 81, 83, 2, 93};
-    solutions[2] = new int[]{83, 91, -50, -82, 64, -59, 77, 66, -45, 46, 85, -80, -69, 22, 73};
-    solutions[3] = new int[]{-63, -74, -26, -7, -30, -88, -31, -24, -11, -27, -91, -21, -62, -99};
-    solutions[4] = new int[]{42, 71, 12, 85, 95, 4, 16, 10, 50, 82, 14, 57, 69, 36, 29};
-    int[] response = tester.target.Reverse(testCase);
-    if (!Enumerable.SequenceEqual(response, solutions[index])) {
-      failedCases.Enqueue(
-        new TestFail(
-          "Reverse",
-          testCase,
-          "[" + string.Join(", ", solutions[index]) + "]",
-          "[" + string.Join(", ", response) + "]",
-          index
-        )
-      );
-    }
+      solutions[0] = new int[] { 75, 2, 0, 67, 99, -71, -27, 33, 25, -21, 86, 47, 77, 26 };
+      solutions[1] = new int[] { 34, 26, 73, -57, 0, 41, 59, 82, 78, -94, 60, 81, 83, 2, 93 };
+      solutions[2] = new int[] { 83, 91, -50, -82, 64, -59, 77, 66, -45, 46, 85, -80, -69, 22, 73 };
+      solutions[3] = new int[] { -63, -74, -26, -7, -30, -88, -31, -24, -11, -27, -91, -21, -62, -99 };
+      solutions[4] = new int[] { 42, 71, 12, 85, 95, 4, 16, 10, 50, 82, 14, 57, 69, 36, 29 };
+      int[] response = tester.target.Reverse(testCase);
+      if (!Enumerable.SequenceEqual(response, solutions[index]))
+      {
+        failedCases.Enqueue(
+          new TestFail(
+            "Reverse",
+            testCase,
+            "[" + string.Join(", ", solutions[index]) + "]",
+            "[" + string.Join(", ", response) + "]",
+            index
+          )
+        );
+      }
     }
   }
-  public class TestOnlyEvens : Test {
-    public TestOnlyEvens(Tester _tester) : base(_tester, "Test  OnlyEvens"){}
+  public class TestOnlyEvens : Test
+  {
+    public TestOnlyEvens(Tester _tester) : base(_tester, "Test  OnlyEvens") { }
     protected override void RunCase(int[] testCase, int index)
     {
       int[][] solutions = new int[5][];
@@ -96,8 +104,9 @@ namespace Testing
       }
     }
   }
-  public class TestOnlyOdds : Test {
-    public TestOnlyOdds(Tester _tester) : base(_tester, "Test  OnlyOdds"){}
+  public class TestOnlyOdds : Test
+  {
+    public TestOnlyOdds(Tester _tester) : base(_tester, "Test  OnlyOdds") { }
     protected override void RunCase(int[] testCase, int index)
     {
       int[][] solutions = new int[5][];
@@ -122,8 +131,9 @@ namespace Testing
     }
   }
 
-  public class TestArraysEqual : Test {
-    public TestArraysEqual(Tester _tester) : base(_tester, "Test  ArraysEqual"){}
+  public class TestArraysEqual : Test
+  {
+    public TestArraysEqual(Tester _tester) : base(_tester, "Test  ArraysEqual") { }
     protected override void RunCase(int[] testCase, int index)
     {
       int[][] testValues = new int[5][];
@@ -151,8 +161,9 @@ namespace Testing
     }
   }
 
-  public class TestSortNumbers : Test {
-    public TestSortNumbers(Tester _tester) : base(_tester, "Test  SortNumbers"){}
+  public class TestSortNumbers : Test
+  {
+    public TestSortNumbers(Tester _tester) : base(_tester, "Test  SortNumbers") { }
     protected override void RunCase(int[] testCase, int index)
     {
       int[][] solutions = new int[5][];
@@ -194,13 +205,13 @@ namespace Testing
       // Initialize Cases
       target = GetComponent<ArrayChallenge>();
       // Initialize Cases
-      cases[0] = new int[] { 26, 77, 47, 86, -21, 25, 33, -27, -71, 99, 67, 0, 2, 75};
-      cases[1] = new int[] { 93, 2, 83, 81, 60, -94, 78, 82, 59, 41, 0, -57, 73, 26, 34};
-      cases[2] = new int[] { 73, 22, -69, -80, 85, 46, -45, 66, 77, -59, 64, -82, -50, 91, 83};
-      cases[3] = new int[] { -99, -62, -21, -91, -27, -11, -24, -31, -88, -30, -7, -26, -74, -63};
-      cases[4] = new int[] { 29, 36, 69, 57, 14, 82, 50, 10, 16, 4, 95, 85, 12, 71, 42};
-      tests = new Test[] { 
-        new TestFindMax(this), 
+      cases[0] = new int[] { 26, 77, 47, 86, -21, 25, 33, -27, -71, 99, 67, 0, 2, 75 };
+      cases[1] = new int[] { 93, 2, 83, 81, 60, -94, 78, 82, 59, 41, 0, -57, 73, 26, 34 };
+      cases[2] = new int[] { 73, 22, -69, -80, 85, 46, -45, 66, 77, -59, 64, -82, -50, 91, 83 };
+      cases[3] = new int[] { -99, -62, -21, -91, -27, -11, -24, -31, -88, -30, -7, -26, -74, -63 };
+      cases[4] = new int[] { 29, 36, 69, 57, 14, 82, 50, 10, 16, 4, 95, 85, 12, 71, 42 };
+      tests = new Test[] {
+        new TestFindMax(this),
         new TestFindMin(this),
         new TestFindElement(this),
         new TestReverse(this),
@@ -246,13 +257,15 @@ namespace Testing
         RunCaseAndHandleErrors(i);
       }
     }
-    public string results {
-      get {
+    public string results
+    {
+      get
+      {
         string successColor = failedCases.Count == 0 ? "<color=green>" : "<color=red>";
         string endColor = "</color>";
 
         string resultMessage = successColor;
-        resultMessage += methodName + "():  " + (tester.cases.Length - failedCases.Count)  + "/" + tester.cases.Length + " tests passed." + endColor + "\n";
+        resultMessage += methodName + "():  " + (tester.cases.Length - failedCases.Count) + "/" + tester.cases.Length + " tests passed." + endColor + "\n";
         foreach (var tf in failedCases)
         {
           resultMessage += tf.Msg();
@@ -268,14 +281,15 @@ namespace Testing
       try
       {
         RunCase(testCase, index);
-        if (!Enumerable.SequenceEqual(tester.cases[index], testCase)) {
+        if (!Enumerable.SequenceEqual(tester.cases[index], testCase))
+        {
           failedCases.Enqueue(new TestFail(
             methodName,
             "Remember that you can't modify the original array! You must return a <b>new</b> one.",
             index
           ));
           return;
-        } 
+        }
       }
       catch (System.IndexOutOfRangeException e)
       {

@@ -22,7 +22,7 @@ public class SolutionsArrayChallenge : MonoBehaviour {
     return king;
   }
 
-  public int GetIndexOfElement(int[] numbers, int value) {
+  public int FindElement(int[] numbers, int value) {
     for (int i = 0; i < numbers.Length; i++)
     {
       if (numbers[i] != value) continue;
