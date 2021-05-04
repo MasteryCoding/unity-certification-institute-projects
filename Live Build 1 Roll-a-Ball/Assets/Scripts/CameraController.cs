@@ -3,10 +3,10 @@ using UnityEngine;
 public class CameraController : MonoBehaviour
 {
   [SerializeField] private float lookSensitivity;
+  [SerializeField] float minX = 10;
+  [SerializeField] float maxX = 80;
   private Camera cam;
   private GameObject player;
-  const float MIN_X_ROT = 0;
-  const float MAX_X_ROT = 90;
 
   private void Awake()
   {
@@ -41,7 +41,7 @@ public class CameraController : MonoBehaviour
   {
     // Clamp the xRot between MIN and MAX angles
     float xRot = transform.eulerAngles.x + mouseVector.y * lookSensitivity;
-    xRot = Mathf.Clamp(xRot, MIN_X_ROT, MAX_X_ROT);
+    xRot = Mathf.Clamp(xRot, minX, maxX);
 
     float yRot = transform.eulerAngles.y + mouseVector.x * lookSensitivity;
 

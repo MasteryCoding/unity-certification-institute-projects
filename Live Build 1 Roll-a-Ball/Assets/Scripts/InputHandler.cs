@@ -23,14 +23,18 @@ public class InputHandler : MonoBehaviour
 
   private void FixedUpdate()
   {
-    // Get Movement Input Axes 
+    // Get Movement Input Axes
     float x = Input.GetAxis("Horizontal");
     float y = Input.GetAxis("Vertical");
 
-    Vector3 moveRelativeToCamera = camControl.transform.TransformDirection(new Vector3(x, 0, y));
+    // Calculate global coordinates from camera perspective
+    Vector3 tempRot = camControl.transform.eulerAngles;
+    camControl.transform.eulerAngles = new Vector3(0, tempRot.y, 0);
+    Vector3 relative = camControl.transform.TransformDirection(new Vector3(x, 0, y));
+    camControl.transform.eulerAngles = tempRot;
 
-    // Send inputs 
-    playerMovement.Move(moveRelativeToCamera);
+    // Send inputs
+    playerMovement.Move(relative);
   }
 
   void LateUpdate()
