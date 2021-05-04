@@ -16,6 +16,6 @@ public class RampUV : MonoBehaviour
   void Update()
   {
     float offset = Time.time * -scrollSpeed;
-    rend.materials[1].SetTextureOffset("_MainTex", new Vector2(0, offset));
+    rend.materials[0].SetTextureOffset("_MainTex", new Vector2(0, offset));
   }
 }

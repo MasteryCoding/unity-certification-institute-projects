@@ -1,8 +1,15 @@
 using UnityEngine;
 
-public class InteractionButton : MonoBehaviour
+// Topics
+// Inheritance, Triggers
+public class Button : MonoBehaviour
 {
   public ButtonBehaviour[] buttonBehaviours;
+  public Color color;
+
+  private void Start() {
+    GetComponent<Renderer>().material.color = color;
+  }
 
   private void OnTriggerEnter() {
     foreach (ButtonBehaviour b in buttonBehaviours) {
@@ -15,6 +22,13 @@ public class InteractionButton : MonoBehaviour
     foreach (ButtonBehaviour b in buttonBehaviours)
     {
       b.OnButtonUp();
+    }
+  }
+
+  private void OnDrawGizmos() {
+    foreach (ButtonBehaviour b in buttonBehaviours)
+    {
+      Debug.DrawLine(transform.position, b.transform.position, color);
     }
   }
 }

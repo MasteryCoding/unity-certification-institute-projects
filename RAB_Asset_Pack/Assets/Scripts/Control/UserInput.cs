@@ -19,12 +19,18 @@ public class UserInput : MonoBehaviour
     }
   }
 
-  // For Physics
+  // For Physics, Player Movement
   void FixedUpdate()
   {
+    // Get Movement Input Axes 
     float x = Input.GetAxis("Horizontal");
     float y = Input.GetAxis("Vertical");
-    playerMovement.Move(cameraControl.transform.InverseTransformDirection(new Vector3(x, 0, y)));
+
+    // Send inputs relative to camera
+    playerMovement.Move(cameraControl.transform.TransformDirection(new Vector3(x, 0, y)));
+    
+    // Jump if key is pressed
+    if (Input.GetAxis("Jump") > 0) playerMovement.Jump();
   }
 
   // For Camera
@@ -32,7 +38,10 @@ public class UserInput : MonoBehaviour
   {
     float mouseX = Input.GetAxis("Mouse X");
     float mouseY = -Input.GetAxis("Mouse Y");
+    float mouseScrollDelta = Input.mouseScrollDelta.y;
+
     cameraControl.Look(new Vector2(mouseX, mouseY));
+    cameraControl.Scroll(mouseScrollDelta);
   }
 
 }
