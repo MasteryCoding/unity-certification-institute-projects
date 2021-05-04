@@ -25,17 +25,19 @@ public class InputHandler : MonoBehaviour
   {
     // Get Movement Input Axes 
     float x = Input.GetAxis("Horizontal");
-    float y = Input.GetAxis("Vertical"); // Inverted
+    float y = Input.GetAxis("Vertical");
+
+    Vector3 moveRelativeToCamera = camControl.transform.TransformDirection(new Vector3(x, 0, y));
 
     // Send inputs 
-    playerMovement.Move(new Vector3(x, 0, y));
+    playerMovement.Move(moveRelativeToCamera);
   }
 
   void LateUpdate()
   {
     // Gets Mouse Axes
     float mouseX = Input.GetAxis("Mouse X");
-    float mouseY = -Input.GetAxis("Mouse Y");
+    float mouseY = -Input.GetAxis("Mouse Y"); // Inverted
 
     // Sends Mouse Axes to Look() method
     camControl.Look(new Vector2(mouseX, mouseY));
