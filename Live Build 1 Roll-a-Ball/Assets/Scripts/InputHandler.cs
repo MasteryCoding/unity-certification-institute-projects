@@ -35,6 +35,7 @@ public class InputHandler : MonoBehaviour
 
     // Send inputs
     playerMovement.Move(relative);
+    if (Input.GetAxis("Jump") > 0) playerMovement.Jump();
   }
 
   void LateUpdate()
@@ -46,9 +47,4 @@ public class InputHandler : MonoBehaviour
     // Sends Mouse Axes to Look() method
     camControl.Look(new Vector2(mouseX, mouseY));
   }
-
-
-
- 
 }
-

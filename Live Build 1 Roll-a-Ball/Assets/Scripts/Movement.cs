@@ -5,7 +5,9 @@ public class Movement : MonoBehaviour
 {
   [SerializeField] float acceleration = 600;
   Rigidbody rb;
-  
+
+  public float jumpForce;
+
   private void Awake()
   {
     rb = GetComponent<Rigidbody>();
@@ -21,4 +23,12 @@ public class Movement : MonoBehaviour
     // Use the forceVector to add an acceleration to the ball. Ignoring its mass
     rb.AddForce(forceVector, ForceMode.Acceleration);
   }
+
+  public void Jump() {
+    // Check if the ball is grounded before jumping.
+    bool grounded = Physics.Raycast(transform.position, Vector3.down, 1f, LayerMask.NameToLayer("Player"));
+    if (!grounded) return;
+    rb.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
+  }
+
 }
