@@ -36,10 +36,8 @@ public class CameraController : MonoBehaviour
   }
 
   private void AvoidWalls() {
-    int timeout = 0;
-    while (!hasLineOfSight() && timeout < 30) {
-      cam.transform.localPosition += Vector3.forward * 0.5f;
-      timeout++;
+    while (!hasLineOfSight()) {
+      cam.transform.localPosition += Vector3.forward * 0.1f;
     }
   }
 
@@ -53,6 +51,7 @@ public class CameraController : MonoBehaviour
       player.transform.position - cam.transform.position,
       out hitInfo
     );
+    
     if (!hit || !hitInfo.transform.CompareTag("Player")) return false;
     return true;
   }
