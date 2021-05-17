@@ -17,6 +17,16 @@ public class CameraController : MonoBehaviour
   private Camera cam;
   private GameObject player;
 
+
+  public void Look(Vector2 mouseVector)
+  {
+    // Clamp the xRot between MIN and MAX angles
+    float xRot = transform.eulerAngles.x + mouseVector.y * lookSensitivity;
+    xRot = Mathf.Clamp(xRot, minX, maxX);
+    float yRot = transform.eulerAngles.y + mouseVector.x * lookSensitivity;
+    transform.eulerAngles = new Vector3(xRot, yRot, 0);
+  }
+
   private void Awake()
   {
     // Get the Camera in children.
@@ -35,43 +45,32 @@ public class CameraController : MonoBehaviour
     }
   }
 
-  private void AvoidWalls() {
-    while (!hasLineOfSight()) {
-      cam.transform.localPosition += Vector3.forward * 0.1f;
-    }
-  }
-
-  // Checks if camera has line of sight to player.
-  private bool hasLineOfSight() {
-    RaycastHit hitInfo;
-
-    // Raycast towards the player
-    bool hit = Physics.Raycast(
-      cam.transform.position,
-      player.transform.position - cam.transform.position,
-      out hitInfo
-    );
-    
-    if (!hit || !hitInfo.transform.CompareTag("Player")) return false;
-    return true;
-  }
-
   private void LateUpdate()
   {
     transform.position = player.transform.position;
     cam.transform.LookAt(player.transform.position);
     cam.transform.localPosition = new Vector3(0, height, -distance);
-    AvoidWalls();
+    AvoidWalls(); // Ensure camera does not get stuck in a wall.
   }
-  
-  public void Look(Vector2 mouseVector)
+
+  const int MAX_TRIES = 30; // Exit condition to avoid infinite loop.
+  const float STEP_AMOUNT = 0.3f; // Amount between LOS checks
+  private void AvoidWalls()
   {
-    // Clamp the xRot between MIN and MAX angles
-    float xRot = transform.eulerAngles.x + mouseVector.y * lookSensitivity;
-    xRot = Mathf.Clamp(xRot, minX, maxX);
-
-    float yRot = transform.eulerAngles.y + mouseVector.x * lookSensitivity;
-
-    transform.eulerAngles = new Vector3(xRot, yRot, 0);
+    int tries = 0;
+    while (tries < MAX_TRIES)
+    {
+      tries++;
+      RaycastHit hitInfo;
+      // Raycast towards the player
+      bool hit = Physics.Raycast(
+        cam.transform.position,
+        player.transform.position - cam.transform.position, // Vector subtraction slide
+        out hitInfo
+      );
+      if (!hit) break;
+      if (hitInfo.transform.CompareTag("Player")) break;
+      cam.transform.localPosition += Vector3.forward * STEP_AMOUNT;
+    }
   }
 }

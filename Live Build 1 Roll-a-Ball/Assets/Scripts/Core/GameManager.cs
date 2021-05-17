@@ -7,18 +7,21 @@ public class GameManager : MonoBehaviour
   public MainMenu menu;
   bool paused = true;
 
-  public static GameManager gm;
-  public static AudioManager am;
+  // Singleton Pattern https://www.tutorialspoint.com/design_pattern/singleton_pattern.htm
+  // Allows other scripts to reference a top-level class by setting a static instance of itself.
+  public static GameManager gm; // GameManager Singleton
+  public static AudioManager am; // Audio Manager Singleton
 
   private void Awake() {
     if (gm == null) {
       gm = this;
     } else {
-      Destroy(gameObject);
+      Destroy(gameObject); // If gm already exists, the GO and all its children are deleted.
     }
-    am = GetComponent<AudioManager>();
+    am = GetComponent<AudioManager>(); // Also include reference to AudioManager for easer of access.
     DontDestroyOnLoad(gameObject);
   }
+  // End of Singleton Pattern
 
   public void PlayPause() {
     paused = !paused;
