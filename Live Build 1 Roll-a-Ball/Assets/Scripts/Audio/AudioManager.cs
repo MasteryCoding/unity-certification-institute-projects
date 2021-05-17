@@ -15,7 +15,7 @@ public class AudioManager : MonoBehaviour
   }
 
   private void Start() {
-    Play("Theme");
+    Play("Theme"); // Play's background music
   }
 
   public void Play(string name) {
