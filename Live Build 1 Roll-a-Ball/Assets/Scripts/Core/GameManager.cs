@@ -17,6 +17,7 @@ public class GameManager : MonoBehaviour
       gm = this;
     } else {
       Destroy(gameObject); // If gm already exists, the GO and all its children are deleted.
+      return;
     }
     am = GetComponent<AudioManager>(); // Also include reference to AudioManager for easer of access.
     DontDestroyOnLoad(gameObject);

@@ -136,7 +136,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 163666063, guid: 536f3d6bb8930fc4b9e73efd435db8cb, type: 3}
       propertyPath: sounds.Array.data[6].volume
-      value: 0.33
+      value: 0.446
       objectReference: {fileID: 0}
     - target: {fileID: 4095217975178682780, guid: 536f3d6bb8930fc4b9e73efd435db8cb, type: 3}
       propertyPath: near clip plane
